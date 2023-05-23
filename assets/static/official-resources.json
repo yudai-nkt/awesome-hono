@@ -1,0 +1,26 @@
+[
+  {
+    "id": "github-org",
+    "name": "GitHub organization",
+    "summary": "Hono's GitHub organization",
+    "url": "https://github.com/honojs"
+  },
+  {
+    "id": "documentation",
+    "name": "Documentation",
+    "summary": "Documentation website for Hono",
+    "url": "https://hono.dev"
+  },
+  {
+    "id": "twitter",
+    "name": "Twitter",
+    "summary": "Twitter account for Hono",
+    "url": "https://twitter.com/honojs"
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "summary": "Discord server for Hono",
+    "url": "https://discord.com/invite/KMh2eNSdxV"
+  }
+]

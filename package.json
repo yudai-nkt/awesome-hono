@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "wrangler dev ./src/index.tsx",
+    "deploy": "wrangler deploy ./src/index.tsx"
+  },
+  "dependencies": {
+    "hono": "^3.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230518.0",
+    "wrangler": "^3.0.1"
+  }
+}

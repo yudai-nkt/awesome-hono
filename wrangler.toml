@@ -1,0 +1,6 @@
+name = "awesome-hono"
+compatibility_date = "2023-05-23"
+main = "./src/index.tsx"
+
+[site]
+bucket = "./assets"
