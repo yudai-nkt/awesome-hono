@@ -5,6 +5,7 @@ import { Entries, type Entry } from "./components/Entries";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Stylesheet } from "./components/Stylesheet";
+import { Submission } from "./pages/Submission";
 import { parseJSONFromKVAsset } from "./utils";
 
 const app = new Hono<{ Bindings: Env }>();
@@ -30,6 +31,15 @@ app
         <body>
           <Header />
           <main>
+            <p>
+              Awesome Hono curates awesome stuff around Hono's ecosystem. This
+              website itself is also built using Hono and showcases how you can
+              build a small application with Hono.
+            </p>
+            <p>
+              Want your projects to be listed here? We welcome your submission!
+              Please follow <a href="/submission">the submission guide</a>.
+            </p>
             <h2>Official resources</h2>
             <Entries entries={officialResources} />
             <h2>Applications</h2>
@@ -47,6 +57,23 @@ app
       </html>
     );
   })
+  .get("/submission", (c) =>
+    c.html(
+      <html>
+        <head>
+          <title>Submission guide | Awesome Hono</title>
+          <Stylesheet />
+        </head>
+        <body>
+          <Header />
+          <main>
+            <Submission />
+          </main>
+          <Footer />
+        </body>
+      </html>
+    )
+  )
   .get("/static/*", serveStatic({ root: "./" }));
 
 export default app;
