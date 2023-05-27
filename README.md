@@ -1,6 +1,6 @@
 # Awesome Hono
 
-A curated list of awesome Hono-related stuff
+A curated list of awesome stuff related to Hono
 
 ## Development
 
