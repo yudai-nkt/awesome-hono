@@ -11,7 +11,8 @@ npm start
 
 ## Submission
 
-Welcome. Submission guide in preparation.
+New submission is always welcome.
+Please follow the submission guide [here](https://awesome-hono.y-nkt.workers.dev/submission).
 
 ## License
 
