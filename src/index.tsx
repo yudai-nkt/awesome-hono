@@ -5,18 +5,22 @@ import { Entries, type Entry } from "./components/Entries";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Stylesheet } from "./components/Stylesheet";
+import { parseJSONFromKVAsset } from "./utils";
 
-const app = new Hono();
+const app = new Hono<{ Bindings: Env }>();
 
 app
   .get("/", async (c) => {
     // TODO: remove type assertions and validate at runtime.
-    const officialResources = (await fetch(
-      new URL("/static/official-resources.json", c.req.url).toString()
-    ).then((r) => r.json())) as Entry[];
-    const applications = (await fetch(
-      new URL("/static/applications.json", c.req.url).toString()
-    ).then((r) => r.json())) as (Entry & { isHobby: boolean })[];
+    const applications = (await parseJSONFromKVAsset(
+      "static/applications.json",
+      c
+    )) as (Entry & { isHobby: boolean })[];
+    const officialResources = (await parseJSONFromKVAsset(
+      "static/official-resources.json",
+      c
+    )) as Entry[];
+
     return c.html(
       <html>
         <head>
