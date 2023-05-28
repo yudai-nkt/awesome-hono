@@ -1,5 +1,5 @@
 export const Header = () => (
-  <header>
+  <header class="container">
     <hgroup>
       <h1>Awesome Hono</h1>
       <p>A curated list of awesome stuff related to Hono</p>

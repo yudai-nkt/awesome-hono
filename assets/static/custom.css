@@ -1,0 +1,16 @@
+.category-list {
+  grid-template-columns: repeat(2, minmax(0%, 1fr));
+}
+
+.category-list > a {
+  text-decoration: none;
+  color: unset;
+}
+
+.category-list p {
+  color: unset;
+}
+
+a > article {
+  margin-bottom: 0px;
+}
