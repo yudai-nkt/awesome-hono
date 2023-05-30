@@ -3,6 +3,30 @@ import { getContentFromKVAsset } from "hono/utils/cloudflare";
 // @ts-expect-error
 import manifestJSON from "__STATIC_CONTENT_MANIFEST";
 
+export const categories = [
+  {
+    id: "official-resources",
+    name: "Official resources",
+    description: "Docs, repos and other resources managed by Hono officially.",
+  },
+  {
+    id: "applications",
+    name: "Applications",
+    description:
+      "Applications that are developed using Hono. Scale does not matter.",
+  },
+  {
+    id: "libraries",
+    name: "Libraries",
+    description: "Community-developed libraries that extend Hono's capability.",
+  },
+  {
+    id: "articles",
+    name: "Articles",
+    description: "Blog posts or other reading materials about Hono.",
+  },
+];
+
 export const parseJSONFromKVAsset = async (
   path: string,
   context: Context<{ Bindings: Env }>
