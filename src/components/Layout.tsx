@@ -1,6 +1,8 @@
 import { html } from "hono/html";
 import { type HtmlEscapedString } from "hono/utils/html";
 
+import { GitHubCorner } from "./GitHubCorner";
+
 export const Layout = ({
   children,
   metadata,
@@ -27,6 +29,7 @@ export const Layout = ({
             <h1>Awesome Hono</h1>
             <p>A curated list of awesome stuff related to Hono</p>
           </hgroup>
+          ${(<GitHubCorner />)}
         </header>
         <main class="container">${children}</main>
         <footer class="container">
