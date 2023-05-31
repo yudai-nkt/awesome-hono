@@ -14,14 +14,32 @@ const app = new Hono<{ Bindings: Env }>();
 app
   .get("/", async (c) =>
     c.html(
-      <Layout metadata={{ title: "Awesome Hono" }}>
+      <Layout
+        metadata={{
+          title: "Awesome Hono",
+          og: {
+            title: "Awesome Hono",
+            description: "A curated list of awesome stuff related to Hono",
+          },
+          url: new URL(c.req.url),
+        }}
+      >
         <Home />
       </Layout>
     )
   )
   .get("/submission", (c) =>
     c.html(
-      <Layout metadata={{ title: "Submission guide | Awesome Hono" }}>
+      <Layout
+        metadata={{
+          title: "Submission guide | Awesome Hono",
+          og: {
+            title: "Submission guide | Awesome Hono",
+            description: "Guideline for submitting your work to Awesome Hono",
+          },
+          url: new URL(c.req.url),
+        }}
+      >
         <Submission />
       </Layout>
     )
@@ -32,7 +50,17 @@ app
       c
     )) as (Entry & { isHobby: boolean })[];
     return c.html(
-      <Layout metadata={{ title: "Applications | Awesome Hono" }}>
+      <Layout
+        metadata={{
+          title: "Applications | Awesome Hono",
+          og: {
+            title: "Applications | Awesome Hono",
+            description: categories.find(({ id }) => id === "applications")
+              ?.description!,
+          },
+          url: new URL(c.req.url),
+        }}
+      >
         <Applications entries={entries} />
       </Layout>
     );
@@ -48,7 +76,16 @@ app
       c
     )) as Entry[];
     return c.html(
-      <Layout metadata={{ title: `${category.name} | Awesome Hono` }}>
+      <Layout
+        metadata={{
+          title: `${category.name} | Awesome Hono`,
+          og: {
+            title: `${category.name} | Awesome Hono`,
+            description: category.description,
+          },
+          url: new URL(c.req.url),
+        }}
+      >
         <Category name={category.name} entries={entries} />
       </Layout>
     );
