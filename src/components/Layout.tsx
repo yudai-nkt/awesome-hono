@@ -10,8 +10,7 @@ export const Layout = ({
   children: HtmlEscapedString;
   metadata: {
     title: string;
-    og: { title: string; description: string };
-    url: URL;
+    description: string;
   };
 }) =>
   html`<!DOCTYPE html>
@@ -20,14 +19,6 @@ export const Layout = ({
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>${metadata.title}</title>
-        <meta property="og:description" content="${metadata.og.description}" />
-        <meta property="og:site_name" content="Awesome Hono" />
-        <meta property="og:title" content="${metadata.og.title}" />
-        <meta
-          property="og:type"
-          content=${metadata.url.pathname === "/" ? "website" : "article"}
-        />
-        <meta property="og:url" content="${metadata.url.toString()}" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/picocss/2.0.0-alpha1/pico.min.css"
@@ -36,6 +27,9 @@ export const Layout = ({
           referrerpolicy="no-referrer"
         />
         <link rel="stylesheet" href="/static/custom.css" />
+        <meta property="og:description" content="${metadata.description}" />
+        <meta property="og:site_name" content="Awesome Hono" />
+        <meta property="og:title" content="${metadata.title}" />
       </head>
       <body>
         <header class="container">

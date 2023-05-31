@@ -3,6 +3,7 @@ import { serveStatic } from "hono/cloudflare-workers";
 
 import { type Entry } from "./components/Entries";
 import { Layout } from "./components/Layout";
+import { ogp } from "./middlewares/ogp";
 import { Applications, Category } from "./pages/Category";
 import { Home } from "./pages/Home";
 import { Submission } from "./pages/Submission";
@@ -12,16 +13,13 @@ const app = new Hono<{ Bindings: Env }>();
 
 // TODO: remove type assertions against parsed JSONs and validate at runtime.
 app
+  .get("*", ogp())
   .get("/", async (c) =>
     c.html(
       <Layout
         metadata={{
           title: "Awesome Hono",
-          og: {
-            title: "Awesome Hono",
-            description: "A curated list of awesome stuff related to Hono",
-          },
-          url: new URL(c.req.url),
+          description: "A curated list of awesome stuff related to Hono",
         }}
       >
         <Home />
@@ -33,11 +31,7 @@ app
       <Layout
         metadata={{
           title: "Submission guide | Awesome Hono",
-          og: {
-            title: "Submission guide | Awesome Hono",
-            description: "Guideline for submitting your work to Awesome Hono",
-          },
-          url: new URL(c.req.url),
+          description: "Guideline for submitting your work to Awesome Hono",
         }}
       >
         <Submission />
@@ -53,12 +47,8 @@ app
       <Layout
         metadata={{
           title: "Applications | Awesome Hono",
-          og: {
-            title: "Applications | Awesome Hono",
-            description: categories.find(({ id }) => id === "applications")
-              ?.description!,
-          },
-          url: new URL(c.req.url),
+          description: categories.find(({ id }) => id === "applications")
+            ?.description!,
         }}
       >
         <Applications entries={entries} />
@@ -79,11 +69,7 @@ app
       <Layout
         metadata={{
           title: `${category.name} | Awesome Hono`,
-          og: {
-            title: `${category.name} | Awesome Hono`,
-            description: category.description,
-          },
-          url: new URL(c.req.url),
+          description: category.description,
         }}
       >
         <Category name={category.name} entries={entries} />
