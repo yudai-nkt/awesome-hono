@@ -28,6 +28,7 @@ export const Layout = ({
         />
         <link rel="stylesheet" href="/static/custom.css" />
         <meta property="og:description" content="${metadata.description}" />
+        <meta property="og:image" content="/static/ogp-image.png" />
         <meta property="og:site_name" content="Awesome Hono" />
         <meta property="og:title" content="${metadata.title}" />
       </head>
