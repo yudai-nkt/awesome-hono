@@ -3,7 +3,7 @@
     "id": "cdnjs",
     "name": "cdnjs",
     "summary": "API server for api.cdnjs.com",
-    "url": "api.cdnjs.com",
+    "url": "https://cdnjs.com/api",
     "isHobby": false
   },
   {
