@@ -17,10 +17,8 @@ app
   .get("/", async (c) =>
     c.html(
       <Layout
-        metadata={{
-          title: "Awesome Hono",
-          description: "A curated list of awesome stuff related to Hono",
-        }}
+        title="Awesome Hono"
+        description="A curated list of awesome stuff related to Hono"
       >
         <Home />
       </Layout>
@@ -29,10 +27,8 @@ app
   .get("/submission", (c) =>
     c.html(
       <Layout
-        metadata={{
-          title: "Submission guide | Awesome Hono",
-          description: "Guideline for submitting your work to Awesome Hono",
-        }}
+        title="Submission guide | Awesome Hono"
+        description="Guideline for submitting your work to Awesome Hono"
       >
         <Submission />
       </Layout>
@@ -45,11 +41,10 @@ app
     )) as (Entry & { isHobby: boolean })[];
     return c.html(
       <Layout
-        metadata={{
-          title: "Applications | Awesome Hono",
-          description: categories.find(({ id }) => id === "applications")
-            ?.description!,
-        }}
+        title="Applications | Awesome Hono"
+        description={
+          categories.find(({ id }) => id === "applications")?.description!
+        }
       >
         <Applications entries={entries} />
       </Layout>
@@ -67,10 +62,8 @@ app
     )) as Entry[];
     return c.html(
       <Layout
-        metadata={{
-          title: `${category.name} | Awesome Hono`,
-          description: category.description,
-        }}
+        title={`${category.name} | Awesome Hono`}
+        description={category.description}
       >
         <Category name={category.name} entries={entries} />
       </Layout>

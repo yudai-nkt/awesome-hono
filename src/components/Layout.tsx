@@ -4,21 +4,20 @@ import { type HtmlEscapedString } from "hono/utils/html";
 import { GitHubCorner } from "./GitHubCorner";
 
 export const Layout = ({
+  title,
+  description,
   children,
-  metadata,
 }: {
+  title: string;
+  description: string;
   children: HtmlEscapedString;
-  metadata: {
-    title: string;
-    description: string;
-  };
 }) =>
   html`<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <title>${metadata.title}</title>
+        <title>${title}</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/picocss/2.0.0-alpha1/pico.min.css"
@@ -27,10 +26,10 @@ export const Layout = ({
           referrerpolicy="no-referrer"
         />
         <link rel="stylesheet" href="/static/custom.css" />
-        <meta property="og:description" content="${metadata.description}" />
+        <meta property="og:description" content="${description}" />
         <meta property="og:image" content="/static/ogp-image.png" />
         <meta property="og:site_name" content="Awesome Hono" />
-        <meta property="og:title" content="${metadata.title}" />
+        <meta property="og:title" content="${title}" />
       </head>
       <body>
         <header class="container">
