@@ -38,7 +38,7 @@ app
     const entries = (await parseJSONFromKVAsset(
       "static/applications.json",
       c
-    )) as (Entry & { isHobby: boolean })[];
+    )) as Entry<{ isHobby: boolean }>[];
     return c.html(
       <Layout
         title="Applications | Awesome Hono"

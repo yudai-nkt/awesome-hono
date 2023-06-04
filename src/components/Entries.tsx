@@ -1,4 +1,10 @@
-export type Entry = { id: string; name: string; summary: string; url: string };
+export type Entry<T = unknown> = {
+  id: string;
+  name: string;
+  summary: string;
+  url: string;
+  properties: T;
+};
 
 export const Entries = ({ entries }: { entries: Entry[] }) =>
   entries.length === 0 ? (

@@ -16,13 +16,15 @@ export const Category = ({
 export const Applications = ({
   entries,
 }: {
-  entries: (Entry & { isHobby: boolean })[];
+  entries: Entry<{ isHobby: boolean }>[];
 }) => (
   <>
     <h2>Applications</h2>
     <h3>Production-grade projects</h3>
-    <Entries entries={entries.filter(({ isHobby }) => !isHobby)} />
+    <Entries
+      entries={entries.filter(({ properties }) => !properties.isHobby)}
+    />
     <h3>Hobby projects</h3>
-    <Entries entries={entries.filter(({ isHobby }) => isHobby)} />
+    <Entries entries={entries.filter(({ properties }) => properties.isHobby)} />
   </>
 );

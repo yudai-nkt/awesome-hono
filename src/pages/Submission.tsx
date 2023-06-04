@@ -1,3 +1,38 @@
+const topLevelKeys = [
+  {
+    name: "id",
+    description:
+      "Identifier of the entry. Must be unique within the same category.",
+    type: "string",
+    required: true,
+  },
+  {
+    name: "name",
+    description: "Concise name of the entry.",
+    type: "string",
+    required: true,
+  },
+  {
+    name: "summary",
+    description: "Short description of the entry.",
+    type: "string",
+    required: true,
+  },
+  {
+    name: "url",
+    description: "URL of the entry.",
+    type: "string",
+    required: true,
+  },
+  {
+    name: "properties",
+    description:
+      "Additional information of the entry. Required by some categories.",
+    type: "Record<string, string>",
+    required: false,
+  },
+];
+
 export const Submission = () => (
   <>
     <h2>Submission guide</h2>
@@ -36,40 +71,55 @@ export const Submission = () => (
         <tr>
           <th scope="col">Key name</th>
           <th scope="col">Description</th>
+          <th scope="col">Required</th>
+          <th scope="col">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {topLevelKeys.map(({ name, description, type, required }) => (
+          <tr>
+            <th scope="row">
+              <code>{name}</code>
+            </th>
+            <td>{description}</td>
+            <td>{required ? "Yes" : "No"}</td>
+            <td>
+              <code>{type}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p>
+      The <code>properties</code> key is optional, meaning that some categories
+      require it to be present while others do not. Categories that require the{" "}
+      <code>properties</code> key and its contents are explained below.
+    </p>
+    <h3>Applications</h3>
+    Applications category's <code>properties</code> key consists of the
+    following JSON object. All keys are required.
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Key name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Type</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">
-            <code>id</code>
+            <code>isHobby</code>
           </th>
           <td>
-            Identifier of the entry. Must be unique within the same category.
+            <code>true</code> if the entry is a small-scale hobby app,{" "}
+            <code>false</code> otherwise.
           </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <code>name</code>
-          </th>
-          <td>Concise name of the entry.</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <code>summary</code>
-          </th>
-          <td>Short description of the entry.</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <code>url</code>
-          </th>
-          <td>URL of the entry.</td>
+          <td>
+            <code>boolean</code>
+          </td>
         </tr>
       </tbody>
     </table>
-    <p>
-      All of these keys are required and some categories require additional keys
-      (to be documented later).
-    </p>
   </>
 );

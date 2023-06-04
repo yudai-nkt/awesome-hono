@@ -4,20 +4,26 @@
     "name": "cdnjs",
     "summary": "API server for api.cdnjs.com",
     "url": "https://cdnjs.com/api",
-    "isHobby": false
+    "properties": {
+      "isHobby": false
+    }
   },
   {
     "id": "polyfill.io",
     "name": "Polyfill.io",
     "summary": "Polyfill.io polyfills only what is needed by reading user agent",
     "url": "https://polyfill.io/v3/",
-    "isHobby": false
+    "properties": {
+      "isHobby": false
+    }
   },
   {
     "id": "awesome-hono",
     "name": "Awesome Hono",
     "summary": "Curated list of awesome Hono-related stuff (this website)",
     "url": "https://awesome-hono.y-nkt.workers.dev",
-    "isHobby": true
+    "properties": {
+      "isHobby": true
+    }
   }
 ]
