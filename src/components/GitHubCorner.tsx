@@ -5,6 +5,7 @@ export const GitHubCorner = () => (
     href="https://github.com/yudai-nkt/awesome-hono"
     class="github-corner"
     target="_blank"
+    aria-label="Link to Awesome Hono's GitHub repository"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
