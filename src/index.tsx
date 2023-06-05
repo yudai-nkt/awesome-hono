@@ -1,17 +1,16 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/cloudflare-workers";
+import { $boolean, $object, $void } from "lizod";
 
-import { type Entry } from "./components/Entries";
 import { Layout } from "./components/Layout";
 import { ogp } from "./middlewares/ogp";
 import { Applications, Category } from "./pages/Category";
 import { Home } from "./pages/Home";
 import { Submission } from "./pages/Submission";
-import { categories, parseJSONFromKVAsset } from "./utils";
+import { categories, validateEntries } from "./utils";
 
 const app = new Hono<{ Bindings: Env }>();
 
-// TODO: remove type assertions against parsed JSONs and validate at runtime.
 app
   .get("*", ogp())
   .get("/", async (c) =>
@@ -35,10 +34,11 @@ app
     )
   )
   .get("/applications", async (c) => {
-    const entries = (await parseJSONFromKVAsset(
-      "static/applications.json",
-      c
-    )) as Entry<{ isHobby: boolean }>[];
+    const entries = await validateEntries(
+      "applications",
+      c,
+      $object({ isHobby: $boolean })
+    );
     return c.html(
       <Layout
         title="Applications | Awesome Hono"
@@ -56,10 +56,7 @@ app
     if (category === undefined) {
       return c.notFound();
     }
-    const entries = (await parseJSONFromKVAsset(
-      `static/${categoryId}.json`,
-      c
-    )) as Entry[];
+    const entries = await validateEntries(categoryId, c, $void);
     return c.html(
       <Layout
         title={`${category.name} | Awesome Hono`}

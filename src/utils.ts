@@ -1,7 +1,10 @@
 import { type Context } from "hono";
 import { getContentFromKVAsset } from "hono/utils/cloudflare";
+import { $array, $object, $string, type Validator } from "lizod";
 // @ts-expect-error
 import manifestJSON from "__STATIC_CONTENT_MANIFEST";
+
+import { type Entry } from "./components/Entries";
 
 export const categories = [
   {
@@ -27,7 +30,7 @@ export const categories = [
   },
 ];
 
-export const parseJSONFromKVAsset = async (
+const parseJSONFromKVAsset = async (
   path: string,
   context: Context<{ Bindings: Env }>
 ) => {
@@ -39,4 +42,31 @@ export const parseJSONFromKVAsset = async (
   // Only known keys under the developers' control are passed to this function,
   // so use of non-nullish assertion would be justified for the time being.
   return JSON.parse(new TextDecoder().decode(asset!));
+};
+
+export const validateEntries = async <T>(
+  category: string,
+  context: Context<{ Bindings: Env }>,
+  // TODO: make subScheme optional w/o compile error
+  subSchema: Validator<T>
+): Promise<Entry<T>[]> => {
+  const entries = await parseJSONFromKVAsset(
+    `static/${category}.json`,
+    context
+  );
+
+  const schema = $array(
+    $object({
+      id: $string,
+      name: $string,
+      summary: $string,
+      url: $string,
+      properties: subSchema,
+    })
+  );
+
+  if (schema(entries)) {
+    return entries;
+  }
+  throw new Error("Validation failed.");
 };
