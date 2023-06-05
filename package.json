@@ -1,4 +1,5 @@
 {
+  "private": true,
   "scripts": {
     "start": "wrangler dev ./src/index.tsx",
     "deploy": "wrangler deploy ./src/index.tsx"
