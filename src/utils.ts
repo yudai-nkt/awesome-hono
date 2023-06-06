@@ -51,7 +51,7 @@ export const validateEntries = async <T>(
   subSchema: Validator<T>
 ): Promise<Entry<T>[]> => {
   const entries = await parseJSONFromKVAsset(
-    `static/${category}.json`,
+    `static/data/${category}.json`,
     context
   );
 
