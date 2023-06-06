@@ -24,6 +24,12 @@ export const categories = [
     description: "Community-developed libraries that extend Hono's capability.",
   },
   {
+    id: "scaffolds",
+    name: "Scaffolds",
+    description:
+      "Templates or boilerplates to easily start developing with Hono.",
+  },
+  {
     id: "articles",
     name: "Articles",
     description: "Blog posts or other reading materials about Hono.",
