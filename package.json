@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "start": "wrangler dev ./src/index.tsx",
-    "deploy": "wrangler deploy ./src/index.tsx"
+    "deploy": "wrangler deploy ./src/index.tsx",
+    "test": "tsm ./scripts/validate-entries.ts"
   },
   "dependencies": {
     "hono": "^3.2.4",
@@ -10,6 +11,8 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
+    "node-types": "npm:@types/node@^20.2.5",
+    "tsm": "^2.3.0",
     "wrangler": "^3.0.1"
   }
 }
