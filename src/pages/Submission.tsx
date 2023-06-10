@@ -56,6 +56,9 @@ export const Submission = () => (
       <li>Fork the repository.</li>
       <li>Check out a new branch with a comprehensive name.</li>
       <li>Append your project to the category it fits best.</li>
+      <li>
+        Run <code>npm test</code> to make sure the submission is well-formed.
+      </li>
       <li>Commit the change and create a pull request.</li>
     </ol>
     <p>
