@@ -1,7 +1,7 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { $array, $boolean, $object, $string, Validator } from "lizod";
+import { $array, $boolean, $object, $string, type Validator } from "lizod";
 
 const directory = join(
   dirname(fileURLToPath(import.meta.url)),
