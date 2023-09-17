@@ -15,6 +15,12 @@ a > article {
   margin-bottom: 0px;
 }
 
+.grid > a {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 1;
+}
+
 /* The following SVG is taken from https://github.com/tholman/github-corners
 The MIT License (MIT) (c) 2016 Tim Holman */
 .github-corner:hover .octo-arm {
