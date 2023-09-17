@@ -47,4 +47,5 @@ export const Layout = ({
       </body>
     </html>
   );
+
 const prependDoctype = (jsx: HtmlEscapedString) => html`<!DOCTYPE html>${jsx}`;
