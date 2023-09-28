@@ -25,5 +25,5 @@ jobs:
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@2.0.0
         with:
-          # TODO: the secrets are not set yet in GitHub
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
