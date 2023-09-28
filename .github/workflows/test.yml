@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - "assets/static/data/*.json"
+  pull_request:
+    paths:
+      - "assets/static/data/*.json"
 
 jobs:
   test:
