@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "hono-do",
+    "name": "Hono DO",
+    "summary": "A wrapper for Cloudflare Workers' Durable Object, designed for Hono.",
+    "url": "https://github.com/sor4chi/hono-do"
+  }
+]
