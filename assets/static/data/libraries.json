@@ -4,5 +4,11 @@
     "name": "Hono DO",
     "summary": "A wrapper for Cloudflare Workers' Durable Object, designed for Hono.",
     "url": "https://github.com/sor4chi/hono-do"
+  },
+  {
+    "id": "hono-storage",
+    "name": "Hono Storage",
+    "summary": "A storage helper for Hono. Support disk, memory, S3, etc.",
+    "url": "https://github.com/sor4chi/hono-storage"
   }
 ]
