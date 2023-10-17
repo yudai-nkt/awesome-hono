@@ -21,6 +21,10 @@ a > article {
   grid-row: span 1;
 }
 
+main.container {
+  padding: 0px;
+}
+
 /* The following SVG is taken from https://github.com/tholman/github-corners
 The MIT License (MIT) (c) 2016 Tim Holman */
 .github-corner:hover .octo-arm {
