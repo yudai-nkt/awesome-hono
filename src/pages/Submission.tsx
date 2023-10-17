@@ -98,7 +98,7 @@ export const Submission = () => (
       require it to be present while others do not. Categories that require the{" "}
       <code>properties</code> key and its contents are explained below.
     </p>
-    <h3>Applications</h3>
+    <h4>Applications</h4>
     Applications category's <code>properties</code> key consists of the
     following JSON object. All keys are required.
     <table>
