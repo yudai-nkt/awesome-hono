@@ -6,7 +6,7 @@
     "test": "tsm ./scripts/validate-entries.ts"
   },
   "dependencies": {
-    "hono": "^3.2.4",
+    "hono": "^3.8.0",
     "lizod": "^0.2.3"
   },
   "devDependencies": {

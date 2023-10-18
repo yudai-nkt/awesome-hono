@@ -1,18 +1,19 @@
 import { html } from "hono/html";
+import { type FC } from "hono/jsx";
+import { useRequestContext } from "hono/jsx-renderer";
 import { type HtmlEscapedString } from "hono/utils/html";
 
 import { GitHubCorner } from "./GitHubCorner";
 
-export const Layout = ({
-  title,
-  description,
-  children,
-}: {
+export const Layout: FC<{
   title: string;
   description: string;
-  children: HtmlEscapedString;
-}) =>
-  prependDoctype(
+}> = ({ title, description, children }) => {
+  const {
+    req: { url, path },
+  } = useRequestContext();
+
+  return prependDoctype(
     <html lang="en">
       <head>
         <meta charset="utf-8" />
@@ -31,6 +32,11 @@ export const Layout = ({
         <meta property="og:image" content="/static/ogp-image.png" />
         <meta property="og:site_name" content="Awesome Hono" />
         <meta property="og:title" content={title} />
+        <meta
+          property="og:type"
+          content={path === "/" ? "website" : "article"}
+        />
+        <meta property="og:url" content={url} />
       </head>
       <body>
         <header class="container">
@@ -47,5 +53,6 @@ export const Layout = ({
       </body>
     </html>
   );
+};
 
 const prependDoctype = (jsx: HtmlEscapedString) => html`<!DOCTYPE html>${jsx}`;

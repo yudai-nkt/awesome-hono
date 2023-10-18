@@ -1,37 +1,40 @@
 import { Hono } from "hono";
+import { jsxRenderer } from "hono/jsx-renderer";
 import { serveStatic } from "hono/cloudflare-workers";
 import { $boolean, $object, $void } from "lizod";
 
 import { Layout } from "./components/Layout";
-import { ogp } from "./middlewares/ogp";
 import { Applications, Category } from "./pages/Category";
 import { Home } from "./pages/Home";
 import { Submission } from "./pages/Submission";
 import { categories, validateEntries } from "./utils";
 
+declare module "hono" {
+  interface ContextRenderer {
+    (content: string, head: { title: string; description: string }): Response;
+  }
+}
+
 const app = new Hono<{ Bindings: Env }>();
 
 app
-  .get("*", ogp())
-  .get("/", async (c) =>
-    c.html(
-      <Layout
-        title="Awesome Hono"
-        description="A curated list of awesome stuff related to Hono"
-      >
-        <Home />
-      </Layout>
-    )
+  .get(
+    "*",
+    jsxRenderer(({ children, ...props }) => (
+      <Layout {...props}>{children}</Layout>
+    ))
+  )
+  .get("/", (c) =>
+    c.render(<Home />, {
+      title: "Awesome Hono",
+      description: "A curated list of awesome stuff related to Hono",
+    })
   )
   .get("/submission", (c) =>
-    c.html(
-      <Layout
-        title="Submission guide | Awesome Hono"
-        description="Guideline for submitting your work to Awesome Hono"
-      >
-        <Submission />
-      </Layout>
-    )
+    c.render(<Submission />, {
+      title: "Submission guide | Awesome Hono",
+      description: "Guideline for submitting your work to Awesome Hono",
+    })
   )
   .get("/applications", async (c) => {
     const entries = await validateEntries(
@@ -39,16 +42,12 @@ app
       c,
       $object({ isHobby: $boolean })
     );
-    return c.html(
-      <Layout
-        title="Applications | Awesome Hono"
-        description={
-          categories.find(({ id }) => id === "applications")?.description!
-        }
-      >
-        <Applications entries={entries} />
-      </Layout>
-    );
+    const description = categories.find(({ id }) => id === "applications")
+      ?.description!;
+    return c.render(<Applications entries={entries} />, {
+      title: "Applications | Awesome Hono",
+      description,
+    });
   })
   .get("/:categoryId", async (c) => {
     const { categoryId } = c.req.param();
@@ -57,14 +56,10 @@ app
       return c.notFound();
     }
     const entries = await validateEntries(categoryId, c, $void);
-    return c.html(
-      <Layout
-        title={`${category.name} | Awesome Hono`}
-        description={category.description}
-      >
-        <Category name={category.name} entries={entries} />
-      </Layout>
-    );
+    return c.render(<Category name={category.name} entries={entries} />, {
+      title: `${category.name} | Awesome Hono`,
+      description: category.description,
+    });
   })
   .get("/static/*", serveStatic({ root: "./" }));
 
