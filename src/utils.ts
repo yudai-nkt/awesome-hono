@@ -40,6 +40,9 @@ export const validateEntries = async <T>(
   subSchema: Validator<T>
 ): Promise<Entry<T>[]> => {
   const env = context.env as { ASSETS: { fetch: typeof fetch } };
+  // TODO: this works in Vite preview server, but not in dev server.
+  // I don't know if it works in production.
+  // https://github.com/honojs/vite-plugins/issues/17
   const entries = await env.ASSETS.fetch(
     // Path has to be absolute here.
     // cf. https://github.com/cloudflare/workers-sdk/issues/165#issuecomment-1290538864
