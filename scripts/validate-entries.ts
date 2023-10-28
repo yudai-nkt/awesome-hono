@@ -5,7 +5,7 @@ import { $array, $boolean, $object, $string, type Validator } from "lizod";
 
 const directory = join(
   dirname(fileURLToPath(import.meta.url)),
-  "../assets/static/data"
+  "../public/assets/data"
 );
 const categories = readdirSync(directory);
 const validateEntries = <T>(entries: unknown, subSchema?: Validator<T>) => {
