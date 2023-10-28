@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { serveStatic } from "hono/cloudflare-workers";
 import { $boolean, $object, $void } from "lizod";
 
 import { Layout } from "./components/Layout";
@@ -15,7 +14,7 @@ declare module "hono" {
   }
 }
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono();
 
 app
   .get(
@@ -60,7 +59,6 @@ app
       title: `${category.name} | Awesome Hono`,
       description: category.description,
     });
-  })
-  .get("/static/*", serveStatic({ root: "./" }));
+  });
 
 export default app;

@@ -27,9 +27,9 @@ export const Layout: FC<{
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
-        <link rel="stylesheet" href="/static/custom.css" />
+        <link rel="stylesheet" href="/assets/custom.css" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="/static/ogp-image.png" />
+        <meta property="og:image" content="/assets/ogp-image.png" />
         <meta property="og:site_name" content="Awesome Hono" />
         <meta property="og:title" content={title} />
         <meta
