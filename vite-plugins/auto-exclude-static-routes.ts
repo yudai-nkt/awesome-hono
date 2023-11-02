@@ -4,12 +4,14 @@ import { type Plugin, type ResolvedConfig } from "vite";
 
 type StaticRoutes = { version: number; include: string[]; exclude: string[] };
 
-const onBuild = (): Plugin => {
+const autoExcludeStaticRoutes = (): Plugin => {
   let config: ResolvedConfig;
   let staticRoutes: StaticRoutes;
 
   return {
     name: "auto-exclude-static-routes:build",
+    // `@hono/vite-dev-server`'s exclude option handles static assets during dev mode,
+    // so all we need to take care of is only build mode.
     apply: "build",
     configResolved: async (resolvedConfig) => {
       config = resolvedConfig;
@@ -32,7 +34,5 @@ const onBuild = (): Plugin => {
     },
   };
 };
-
-const autoExcludeStaticRoutes = (): Plugin[] => [onBuild()];
 
 export default autoExcludeStaticRoutes;
