@@ -5,7 +5,7 @@
     "build": "vite build",
     "preserve": "npm run build",
     "serve": "wrangler pages dev dist",
-    "start": "wrangler pages dev -- vite",
+    "start": "vite",
     "test": "tsm ./scripts/validate-entries.ts"
   },
   "dependencies": {
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
     "@hono/vite-cloudflare-pages": "^0.0.2",
-    "@hono/vite-dev-server": "^0.0.12",
+    "@hono/vite-dev-server": "^0.2.0",
     "node-types": "npm:@types/node@^20.2.5",
     "tsm": "^2.3.0",
     "vite": "^4.5.0",

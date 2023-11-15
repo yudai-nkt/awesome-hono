@@ -8,7 +8,7 @@ export default {
   plugins: [
     pages(),
     devServer({
-      cf: {},
+      cf: { assets: true },
       exclude: [...defaultOptions.exclude, /^\/assets\/.+/],
       entry: "./src/index.tsx",
     }),
