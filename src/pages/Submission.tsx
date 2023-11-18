@@ -45,10 +45,10 @@ export const Submission = () => (
       Awesome Hono is open-sourced at a GitHub repository and the list is
       managed as JSON files in the{" "}
       <a
-        href="https://github.com/yudai-nkt/awesome-hono/tree/main/assets/static"
+        href="https://github.com/yudai-nkt/awesome-hono/tree/main/public/assets/data"
         target="_blank"
       >
-        <code>assets/static</code> directory
+        <code>public/assets/data</code> directory
       </a>
       . Submission is basically done through the following steps.
     </p>

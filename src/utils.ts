@@ -1,8 +1,5 @@
 import { type Context } from "hono";
-import { getContentFromKVAsset } from "hono/utils/cloudflare";
 import { $array, $object, $string, type Validator } from "lizod";
-// @ts-expect-error
-import manifestJSON from "__STATIC_CONTENT_MANIFEST";
 
 import { type Entry } from "./components/Entries";
 
@@ -36,30 +33,18 @@ export const categories = [
   },
 ];
 
-const parseJSONFromKVAsset = async (
-  path: string,
-  context: Context<{ Bindings: Env }>
-) => {
-  const asset = await getContentFromKVAsset(path, {
-    manifest: manifestJSON,
-    namespace: context.env.__STATIC_CONTENT,
-  });
-
-  // Only known keys under the developers' control are passed to this function,
-  // so use of non-nullish assertion would be justified for the time being.
-  return JSON.parse(new TextDecoder().decode(asset!));
-};
-
 export const validateEntries = async <T>(
   category: string,
-  context: Context<{ Bindings: Env }>,
+  context: Context,
   // TODO: make subScheme optional w/o compile error
   subSchema: Validator<T>
 ): Promise<Entry<T>[]> => {
-  const entries = await parseJSONFromKVAsset(
-    `static/data/${category}.json`,
-    context
-  );
+  const env = context.env as { ASSETS: { fetch: typeof fetch } };
+  const entries = await env.ASSETS.fetch(
+    // Path has to be absolute here.
+    // cf. https://github.com/cloudflare/workers-sdk/issues/165#issuecomment-1290538864
+    new URL(`/assets/data/${category}.json`, context.req.url)
+  ).then((r) => r.json());
 
   const schema = $array(
     $object({
