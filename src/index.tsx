@@ -1,11 +1,10 @@
 import { Hono } from "hono";
-import { $boolean, $object, $void } from "lizod";
 
 import { renderer } from "./middleware/renderer";
 import { Applications, Category } from "./pages/Category";
 import { Home } from "./pages/Home";
 import { Submission } from "./pages/Submission";
-import { categories, validateEntries } from "./utils";
+import { categories } from "./utils";
 
 const app = new Hono();
 
@@ -23,27 +22,21 @@ app
       description: "Guideline for submitting your work to Awesome Hono",
     })
   )
-  .get("/applications", async (c) => {
-    const entries = await validateEntries(
-      "applications",
-      c,
-      $object({ isHobby: $boolean })
-    );
+  .get("/applications", (c) => {
     const description = categories.find(({ id }) => id === "applications")
       ?.description!;
-    return c.render(<Applications entries={entries} />, {
+    return c.render(<Applications />, {
       title: "Applications | Awesome Hono",
       description,
     });
   })
-  .get("/:categoryId", async (c) => {
+  .get("/:categoryId", (c) => {
     const { categoryId } = c.req.param();
     const category = categories.find(({ id }) => id === categoryId);
     if (category === undefined) {
       return c.notFound();
     }
-    const entries = await validateEntries(categoryId, c, $void);
-    return c.render(<Category name={category.name} entries={entries} />, {
+    return c.render(<Category category={category} />, {
       title: `${category.name} | Awesome Hono`,
       description: category.description,
     });
