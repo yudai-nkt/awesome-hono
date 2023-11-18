@@ -9,7 +9,7 @@
     "test": "tsm ./scripts/validate-entries.ts"
   },
   "dependencies": {
-    "hono": "^3.8.0",
+    "hono": "^3.10.1",
     "lizod": "^0.2.3"
   },
   "devDependencies": {

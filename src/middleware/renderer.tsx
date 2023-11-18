@@ -1,11 +1,18 @@
-import { html } from "hono/html";
 import { type FC } from "hono/jsx";
-import { useRequestContext } from "hono/jsx-renderer";
-import { type HtmlEscapedString } from "hono/utils/html";
+import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 
-import { GitHubCorner } from "./GitHubCorner";
+import { GitHubCorner } from "../components/GitHubCorner";
 
-export const Layout: FC<{
+declare module "hono" {
+  interface ContextRenderer {
+    (
+      content: string | Promise<string>,
+      head: { title: string; description: string }
+    ): Response;
+  }
+}
+
+const Layout: FC<{
   title: string;
   description: string;
 }> = ({ title, description, children }) => {
@@ -13,7 +20,7 @@ export const Layout: FC<{
     req: { url, path },
   } = useRequestContext();
 
-  return prependDoctype(
+  return (
     <html lang="en">
       <head>
         <meta charset="utf-8" />
@@ -55,4 +62,8 @@ export const Layout: FC<{
   );
 };
 
-const prependDoctype = (jsx: HtmlEscapedString) => html`<!DOCTYPE html>${jsx}`;
+export const renderer = () =>
+  jsxRenderer(
+    ({ children, ...props }) => <Layout {...props}>{children}</Layout>,
+    { docType: true }
+  );

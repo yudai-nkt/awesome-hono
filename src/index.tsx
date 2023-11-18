@@ -1,28 +1,16 @@
 import { Hono } from "hono";
-import { jsxRenderer } from "hono/jsx-renderer";
 import { $boolean, $object, $void } from "lizod";
 
-import { Layout } from "./components/Layout";
+import { renderer } from "./middleware/renderer";
 import { Applications, Category } from "./pages/Category";
 import { Home } from "./pages/Home";
 import { Submission } from "./pages/Submission";
 import { categories, validateEntries } from "./utils";
 
-declare module "hono" {
-  interface ContextRenderer {
-    (content: string, head: { title: string; description: string }): Response;
-  }
-}
-
 const app = new Hono();
 
 app
-  .get(
-    "*",
-    jsxRenderer(({ children, ...props }) => (
-      <Layout {...props}>{children}</Layout>
-    ))
-  )
+  .get("*", renderer())
   .get("/", (c) =>
     c.render(<Home />, {
       title: "Awesome Hono",
