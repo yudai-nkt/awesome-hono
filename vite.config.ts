@@ -9,7 +9,7 @@ export default {
     pages(),
     devServer({
       cf: { assets: true },
-      exclude: [...defaultOptions.exclude, /^\/assets\/.+/],
+      exclude: [...defaultOptions.exclude, "/assets/**"],
       entry: "./src/index.tsx",
     }),
     autoExcludeStaticRoutes(),
