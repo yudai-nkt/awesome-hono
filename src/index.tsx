@@ -22,24 +22,22 @@ app
       description: "Guideline for submitting your work to Awesome Hono",
     })
   )
-  .get("/applications", (c) => {
-    const description = categories.find(({ id }) => id === "applications")
-      ?.description!;
-    return c.render(<Applications />, {
-      title: "Applications | Awesome Hono",
-      description,
-    });
-  })
   .get("/:categoryId", (c) => {
     const { categoryId } = c.req.param();
     const category = categories.find(({ id }) => id === categoryId);
     if (category === undefined) {
       return c.notFound();
     }
-    return c.render(<Category category={category} />, {
+    const head = {
       title: `${category.name} | Awesome Hono`,
       description: category.description,
-    });
+    };
+    switch (categoryId) {
+      case "applications":
+        return c.render(<Applications />, head);
+      default:
+        return c.render(<Category category={category} />, head);
+    }
   });
 
 export default app;
