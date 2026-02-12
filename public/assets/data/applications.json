@@ -25,5 +25,14 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "shotog",
+    "name": "ShotOG",
+    "summary": "OG image generation API with 8 templates, batch generation, and custom fonts, running on Cloudflare Workers",
+    "url": "https://github.com/nicepkg/shotog",
+    "properties": {
+      "isHobby": false
+    }
   }
 ]
