@@ -25,5 +25,14 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "shipsite",
+    "name": "ShipSite",
+    "summary": "Static site hosting API for LLM agents, built on Cloudflare Workers with Hono",
+    "url": "https://shipsite.sh",
+    "properties": {
+      "isHobby": false
+    }
   }
 ]
