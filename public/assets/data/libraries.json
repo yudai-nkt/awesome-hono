@@ -10,5 +10,11 @@
     "name": "Hono Storage",
     "summary": "A storage helper for Hono. Support disk, memory, S3, etc.",
     "url": "https://github.com/sor4chi/hono-storage"
+  },
+  {
+    "id": "toll-booth",
+    "name": "toll-booth",
+    "summary": "HTTP 402 payment middleware with native Hono adapter. Gates APIs behind Lightning, Cashu, or stablecoin payments with credit balance tracking.",
+    "url": "https://github.com/forgesworn/toll-booth"
   }
 ]
