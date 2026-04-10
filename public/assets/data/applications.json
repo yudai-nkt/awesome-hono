@@ -25,5 +25,14 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "ibanforge",
+    "name": "IBANforge",
+    "summary": "IBAN validation and BIC/SWIFT lookup API built with Hono. x402 micropayments, MCP server, 75+ countries, 121K+ GLEIF entries. Self-hostable via Docker.",
+    "url": "https://github.com/cammac-creator/ibanforge",
+    "properties": {
+      "isHobby": false
+    }
   }
 ]
