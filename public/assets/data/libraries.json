@@ -1,5 +1,11 @@
 [
   {
+    "id": "crawlertoll-hono",
+    "name": "CrawlerToll for Hono",
+    "summary": "Open-source pay-per-crawl middleware. Detects AI crawlers, verifies Web Bot Auth, applies RSL 1.0 policy, issues HTTP 402.",
+    "url": "https://github.com/nhrzxxw9dn-web/crawlertoll-hono-js"
+  },
+  {
     "id": "hono-do",
     "name": "Hono DO",
     "summary": "A wrapper for Cloudflare Workers' Durable Object, designed for Hono.",
