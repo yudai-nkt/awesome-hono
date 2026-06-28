@@ -10,5 +10,11 @@
     "name": "Hono Storage",
     "summary": "A storage helper for Hono. Support disk, memory, S3, etc.",
     "url": "https://github.com/sor4chi/hono-storage"
+  },
+  {
+    "id": "stitchapi-hono",
+    "name": "StitchAPI Hono",
+    "summary": "StitchAPI middleware for Hono — put a typed, validated seam on the context, stream a stitch's SSE output, and map errors to HTTP. Edge/multi-runtime, Fetch-only (no node:* imports).",
+    "url": "https://github.com/rejifald/StitchAPI/tree/main/packages/hono"
   }
 ]
