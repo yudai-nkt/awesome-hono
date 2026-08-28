@@ -25,5 +25,23 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "snapog",
+    "name": "SnapOG",
+    "summary": "Self-hosted Open Graph image generation API, deployed to your own Cloudflare account with R2 caching",
+    "url": "https://github.com/nagpalarpit/snapog",
+    "properties": {
+      "isHobby": false
+    }
+  },
+  {
+    "id": "flatline",
+    "name": "Flatline",
+    "summary": "Self-hosted dead man's switch / heartbeat monitoring for cron jobs, deployed to your own Cloudflare account",
+    "url": "https://github.com/nagpalarpit/flatline",
+    "properties": {
+      "isHobby": false
+    }
   }
 ]
