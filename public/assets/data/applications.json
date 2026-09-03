@@ -25,5 +25,14 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "repoaccess",
+    "name": "RepoAccess",
+    "summary": "Open-source Cloudflare Worker that sells access to private GitHub repos: payments grant team invites, refunds revoke them",
+    "url": "https://github.com/EdgeKits/repoaccess-core",
+    "properties": {
+      "isHobby": false
+    }
   }
 ]
