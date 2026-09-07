@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "hype-stack",
+    "name": "Hype Stack",
+    "summary": "Fullstack SaaS monorepo template with React, Hono, Vite, Electron, Expo, and end-to-end typesafety.",
+    "url": "https://github.com/BetterTyped/hype-stack"
+  }
+]
