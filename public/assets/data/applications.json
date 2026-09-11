@@ -25,5 +25,14 @@
     "properties": {
       "isHobby": true
     }
+  },
+  {
+    "id": "mailysend",
+    "name": "MailySend",
+    "summary": "Self-hosted email platform with a Resend-compatible API, running on Cloudflare Workers",
+    "url": "https://mailysend.com",
+    "properties": {
+      "isHobby": true
+    }
   }
 ]
