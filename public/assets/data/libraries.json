@@ -10,5 +10,11 @@
     "name": "Hono Storage",
     "summary": "A storage helper for Hono. Support disk, memory, S3, etc.",
     "url": "https://github.com/sor4chi/hono-storage"
+  },
+  {
+    "id": "guardcore-hono",
+    "name": "@guardcore/hono",
+    "summary": "Edge-safe security middleware with IP filtering, rate limiting with automatic bans and penetration attempt detection.",
+    "url": "https://github.com/Guard-Core/guard-core-ts/tree/master/packages/hono"
   }
 ]
