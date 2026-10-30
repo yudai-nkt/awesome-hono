@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "edgesaas-starter-kit",
+    "name": "NexusPulse EdgeSaaS Starter Kit",
+    "summary": "Production-ready, zero-cold-start Micro-SaaS boilerplate on Cloudflare Workers, Hono, Stripe, and KV rate limiting.",
+    "url": "https://github.com/MilindChatrabhuji/edgesaas-starter-kit"
+  }
+]
