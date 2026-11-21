@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "mockatoo-hono-oauth-testing",
+    "name": "Test OAuth sign-in in Hono with Mockatoo",
+    "summary": "Guide to OAuth and OpenID Connect sign-in in Hono with oauth4webapi, tested in CI against a hosted mock OAuth provider",
+    "url": "https://mockatoo.globalunderdog.com/docs/hono"
+  }
+]
